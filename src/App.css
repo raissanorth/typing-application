@@ -1,24 +1,131 @@
-.App {
-  text-align: center;
+body {
+  margin: 0px;
+  font-family: "Century Gothic", "Arial", sans-serif;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
+.header {
   padding: 20px;
+  background-color: #3887c7;
+}
+
+#title {
+  font-size:3em;
   color: white;
 }
 
-.App-intro {
-  font-size: large;
+#text-display {
+  border: solid black 2px;
+  font-size: 1.5em;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#text-input {
+  border: solid black 2px;
+  display: block;
+  width: 50%;
+  font-size: 1.5em;
+  line-height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttons {
+  text-align: center;
+}
+button {
+  background-color: #3887c7;
+  color: white;
+  font-family: "Century Gothic", "Arial", sans-serif;
+  font-size: 1.5em;
+  border-radius: 2px;
+  border: none;
+  width: 10%;
+  margin: 10px;
+}
+
+#pre {
+  color: grey;
+}
+
+#post {
+  color: black;
+}
+
+#current-correct {
+  color: green;
+}
+
+#current-incorrect{
+  color: red;
+}
+
+#progress {
+    margin: 10px 0px;
+    width: 100%;
+    height: 30px;
+    background-color: grey;
+}
+#bar {
+  height: 100%;
+  background-color: green;
+}
+
+@keyframes bounce {
+  0% { 
+    transform:translateY(-100%);
+    opacity: 0;
+    font-weight: bold;
+  }
+  5% { 
+    transform:translateY(-100%);
+    opacity: 0;
+  }
+  15% {
+    transform:translateY(0);
+  }
+  30% {
+    transform:translateY(-50%);
+  }
+  40% {
+    transform:translateY(0%);
+  }
+  50% {
+    transform:translateY(-30%);
+  }
+  70% {
+    transform:translateY(0%);
+  }
+  80% {
+    transform:translateY(-15%);
+  }
+  90% {
+    transform:translateY(0%);
+  }
+  95% {
+  transform:translateY(-7%);
+  }
+  97% {
+  transform:translateY(0%);
+  }
+  99% {
+  transform:translateY(-3%);
+  }
+  100% {
+  transform:translateY(0);
+  opacity: 1;
+  background-color: none;
+  }
+}
+
+#wpm-container {
+  font-size: 1.5em;
+  text-align: center;
+  position: relative;
+}
+.wpm-bounce {
+  animation-name: bounce;
+  animation-duration: 3s;
+  
 }
