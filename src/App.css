@@ -21,7 +21,7 @@ body {
   padding: 10px;
 }
 
-#text-input {
+.text-input {
   border: solid black 2px;
   display: block;
   width: 50%;

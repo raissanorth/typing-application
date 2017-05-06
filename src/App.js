@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Passage from './components/Passage';
+import Input from './components/Input';
+import NavButton from './components/NavButton';
 import './App.css';
 
 class App extends Component {
@@ -111,10 +114,7 @@ class App extends Component {
 // The updated the render function shows the formattedPassage rather than passage.
   render() {
     return (
-      // Outter div tag
       <div>
-      
-        {/* Using the variables in the state to write a string  */}
         <div className="header">
           <h1 id="title">Typing Website</h1>
         </div >
@@ -123,14 +123,17 @@ class App extends Component {
           <div id="progress">
             <div id="bar" style={{width: this.state.barWidth + "%"}}></div>
           </div>
+
           <div id="wpm-container" className={this.state.wpmStyle}>
             <p id="wpm-display">{this.state.wpm}</p>
           </div>
-          <p id="text-display">{this.state.formattedPassage}</p>
-          <input id="text-input" type="text" value={this.state.input} onChange={this.handleChange} />
+
+          <Passage id="text-display" formattedPassage={this.state.formattedPassage}/>
+          <Input type="text" value={this.state.input} onChange={this.handleChange}/>
+          
           <div className="buttons">
-            <button id="reset-button" onClick={this.handleResetButton}>Reset</button>
-            <button id="next-button" onClick={this.handleNextButton}>Next</button>
+            <NavButton id="reset-button" onClick={this.handleResetButton} title="Reset"></NavButton>
+            <NavButton id="next-button" onClick={this.handleNextButton} title ="Next"></NavButton>
           </div>
         </div>
         
@@ -250,50 +253,3 @@ function pad(n) {
   }
 } 
 
-
-/* Tests */
-
-function testWordIndex() {
-  console.log(App.currentWordIndex);
-}
-
-function testWordCount() {
-  console.log(getWordCount(getPassage()));
-}
-
-function testCurrentWord() {
-  console.log(getCurrentWordValue (getPassage(),5));
-}
-
-function testCheckWordCorrectTrue() {
-  console.log(checkWordCorrect('Lore', getPassage(), 0));
-}
-    
-function testCheckWordCorrectTrue2nd() {
-  console.log(checkWordCorrect('Ipsum', getPassage(), 7));
-}
-
-function testCheckWordCorrectFalse() {
-  console.log(checkWordCorrect('LO', getPassage(), 0));
-}
-    
-function testCheckWordCorrectFalse2nd() {
-  console.log(checkWordCorrect('l', getPassage(), 0));
-}
-
-function testInputCompleteFirstWord() {
-  console.log(checkInputComplete ("Lorem ", getPassage(), 0));
-}
-
-function testInputCompleteFirstWordIncomplete() {
-  console.log(checkInputComplete ("Lor", getPassage(), 0));
-}
-
-function testInputCompleteLastWord() {
-  console.log(checkInputComplete ("amet.", getPassage(), 4));
-}
-  
-
-function testInputCompleteLastWordIncomplete() {
-  console.log(checkInputComplete ("am", getPassage(), 0));
-}
