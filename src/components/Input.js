@@ -16,8 +16,7 @@ onInputChange(input) {
   render() {
     return (
       <div>
-        <input className="text-input" onChange={event => this.onInputChange(event.target.value)} /> 
-        {/*value={props.input} */}
+        <input className="text-input" value={this.state.input} onChange={event => this.onInputChange(event.target.value)} /> 
       </div>
 
     );

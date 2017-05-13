@@ -1,10 +1,19 @@
 import React from 'react';
 
-const NavButton = (props) => {
-  
-  return (
-    <button>{props.title}</button>
-  );
+class NavButton extends React.Component {
+
+  onClick(event) {
+    this.props.onClick(event);
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={event => this.onClick(event)}>{this.props.title}</button>
+      </div>
+    );
+  }
 };
+
 
 export default NavButton;

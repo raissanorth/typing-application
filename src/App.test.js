@@ -1,53 +1,70 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { shallow } from 'enzyme';
 
-it('renders without crashing', () => {
+import App from './App';
+import Input from './components/Input';
+import NavButton from './components/NavButton';
+import Passage from './components/Passage';
+
+
+it('app renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<App />, div);
 });
 
-// function testWordIndex() {
-//   console.log(App.currentWordIndex);
-// }
+it('app renders shallowly without crashing', () => {
+  shallow(<App />);
+});
 
-// function testWordCount() {
-//   console.log(getWordCount(getPassage()));
-// }
+it('input renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<Input />, div);
+});
 
-// function testCurrentWord() {
-//   console.log(getCurrentWordValue (getPassage(),5));
-// }
+it('navbutton renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<NavButton />, div);
+});
 
-// function testCheckWordCorrectTrue() {
-//   console.log(checkWordCorrect('Lore', getPassage(), 0));
-// }
-    
-// function testCheckWordCorrectTrue2nd() {
-//   console.log(checkWordCorrect('Ipsum', getPassage(), 7));
-// }
+it('passage renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<Passage />, div);
+});
 
-// function testCheckWordCorrectFalse() {
-//   console.log(checkWordCorrect('LO', getPassage(), 0));
-// }
-    
-// function testCheckWordCorrectFalse2nd() {
-//   console.log(checkWordCorrect('l', getPassage(), 0));
-// }
+it('word count is correct', () => {
+  expect(getWordCount('Lorem ipsum dolor sit amet.').toEqual(5));
+});
 
-// function testInputCompleteFirstWord() {
-//   console.log(checkInputComplete ("Lorem ", getPassage(), 0));
-// }
+test('word value is correct', () => {
+  expect(getWordValue('Lorem ipsum dolor sit amet.', 3).toEqual('sit'));
+});
 
-// function testInputCompleteFirstWordIncomplete() {
-//   console.log(checkInputComplete ("Lor", getPassage(), 0));
-// }
+test('correct words are detected', () => {
+  expect(checkWordCorrect('ispu', 'Lorem ipsum dolor sit amet.', 1)).toEqual(true);
+});
 
-// function testInputCompleteLastWord() {
-//   console.log(checkInputComplete ("amet.", getPassage(), 4));
-// }
+test('incorrect words are detected', () => {
+  expect(checkWordCorrect('ispa', 'Lorem ipsum dolor sit amet.', 1)).toEqual(false);
+});
+
+test('words in wrong case are detected', () => {
+  expect(checkWordCorrect('LO', 'Lorem ipsum dolor sit amet.', 0)).toEqual(false);
+});
+
+test('any complete word other than last is detected', () => {
+  expect(checkInputComplete ("Lorem ", 'Lorem ipsum dolor sit amet.', 0)).toEqual(true);
+});
+
+test('first incomplete word is detected', () => {
+  expect(checkInputComplete ("Lor", 'Lorem ipsum dolor sit amet.', 0)).toEqual(false);
+});
+
+test('last incomplete word is detected', () => {
+  expect(checkInputComplete ('am', 'Lorem ipsum dolor sit amet.', 4)).toEqual(false);
+});
+
+test('last complete word is detected', () => {
+  expect(checkInputComplete ('amet.', 'Lorem ipsum dolor sit amet.', 4)).toEqual(false);
+});
   
-
-// function testInputCompleteLastWordIncomplete() {
-//   console.log(checkInputComplete ("am", getPassage(), 0));
-// }
