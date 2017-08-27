@@ -61,6 +61,7 @@ class App extends Component {
       start: (this.state.start === null) ? new Date() : this.state.start,
       input: input,
       index: index,
+      wordCompleted: wordCompleted,
       numWordsTyped: numWordsTyped,
       wordCorrect: wordCorrect,
       lastWord: lastWord,
@@ -127,7 +128,7 @@ class App extends Component {
           </div>
 
           <Passage id="text-display" formattedPassage={this.state.formattedPassage} />
-          <Input type="text" onChange={this.handleChange} />
+          <Input type="text" input={this.state.input} onChange={this.handleChange} />
 
           <div className="buttons">
             <NavButton id="reset-button" onClick={this.handleResetButton} title="Reset"></NavButton>
@@ -153,11 +154,7 @@ class App extends Component {
     );
   }
 }
-
-export default App;
-
-
-// Calculates width for progress bar based on index of the passage.
+  // Calculates width for progress bar based on index of the passage.
 function showProgress(input, passage, index, wordCount) {
   let width = 100;
   if (!LastWordCompleted(input, passage, index)) {
@@ -213,6 +210,7 @@ function checkInputComplete(input, passage, index) {
   }
 }
 
+
 /* Check if last word reached, and input === the last word. Return Boolean. */
 function LastWordCompleted(input, passage, index) {
 
@@ -238,6 +236,7 @@ function defineStyle(passage, index, correct) {
     <text id='post'> {postCurrentWord} </text>
   </div>;
 }
+
 /* Function takes a number and returns a string padded out to 3 digits*/
 function pad(n) {
   if (n < 10) {
@@ -250,4 +249,10 @@ function pad(n) {
     return n;
   }
 }
+
+
+export default App;
+
+
+
 
