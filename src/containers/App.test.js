@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 
 import App from './App';
+import Functions from './Functions';
 import Input from './components/Input';
 import NavButton from './components/NavButton';
 import Passage from './components/Passage';
@@ -33,7 +34,7 @@ it('passage renders without crashing', () => {
 });
 
 it('word count is correct', () => {
-  expect(getWordCount('Lorem ipsum dolor sit amet.').toEqual(5));
+  expect(Functions.getWordCount('Lorem ipsum dolor sit amet.').toEqual(5));
 });
 
 test('word value is correct', () => {

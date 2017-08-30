@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Passage from './components/Passage';
-import Input from './components/Input';
-import NavButton from './components/NavButton';
-import './App.css';
+import Passage from '../components/Passage';
+import Input from '../components/Input';
+import NavButton from '../components/NavButton';
+import '../styles/index.css';
 
 class App extends Component {
   constructor(props) {
